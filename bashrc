@@ -1,3 +1,5 @@
+# Do not send control keys to terminal. I did this for vim to work with ctrl+s
+stty start undef stop undef
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 alias c='clear'
 ## a quick way to get out of current directory ##
@@ -18,20 +20,20 @@ alias mkdir='mkdir -pv'
 # become root #
 alias root='sudo -i'
 alias su='sudo -i'
-## pass options to free ## 
+## pass options to free ##
 alias meminfo='free -m -l -t'
- 
+
 ## get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
- 
+
 ## get top process eating cpu ##
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
- 
+
 ## Get server cpu info ##
 alias cpuinfo='lscpu'
- 
+
 alias gno='gnome-open'
 
 ### Added by the Heroku Toolbelt
