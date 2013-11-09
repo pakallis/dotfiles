@@ -35,6 +35,9 @@ Bundle 'Lokaltog/powerline'
 Bundle 'janx/vim-rubytest'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'skalnik/vim-vroom'
+Bundle 'tpope/vim-bundler'
+Bundle 'altercation/vim-colors-solarized'
+
 " Bundle 'reinh/vim-makegreen'
 
 "Settings
@@ -87,11 +90,11 @@ set backspace=2
 
 set background=dark
 set t_Co=256
-" let g:solarized_termcolors=256
-colorscheme vividchalk
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
 " fast search
-nmap <leader>a <Esc>:Ack! 
-
+nmap <leader>A <Esc>:Ack <c-r><c-w><CR>
 ""rubytest parameters
 
 map <Leader>\ <Plug>RubyTestRun     " change from <Leader>t to <Leader>\
@@ -124,4 +127,22 @@ nmap <Leader>v :e $MYVIMRC
 "Clear search history when you press <Leader>/
 nmap <silent> ,/ :nohlsearch<CR>
 
+"Copy/paste from/to clipboard
+set clipboard=unnamedplus
 
+"Fast save
+nmap ;w :w!<cr>
+nmap ;q :q!<cr>
+
+"More history
+set history=1000
+
+"bash-like tab autocompletion
+set wildmode=list:longest
+
+"Scroll 3 lines per C-e or C-y
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+"No annoying message Press ENTER or type command to continue
+set shortmess=atI
