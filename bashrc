@@ -71,7 +71,10 @@ alias rdbtp='zeus rake db:test:prepare'
 alias rmaq='zeus rake minitest:all:quick'
 alias rmaf='rake minitest:features'
 alias rtest='bundle exec ruby -Itest '
-alias rc='zeus c'
+alias rc='zeus c || rails c'
+alias b='bundle'
+alias rk='rake'
+alias t="ruby -I test"
 alias bi='bundle install'
 alias bu='bundle update'
 alias be='bundle exec'
@@ -133,3 +136,5 @@ function fname {
 }
 
 #TODO add shortcuts for curl
+alias tmux="tmux -2"
+export PYTHONSTARTUP=/home/pakallis/.pythonrc

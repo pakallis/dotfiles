@@ -10,7 +10,6 @@ Bundle 'tpope/vim-vividchalk'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-" Bundle 'majutsushi/tagbar'
 Bundle 'tomasr/molokai'
 
 "Snipmate dependencies
@@ -24,7 +23,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'altercation/vim-colors-solarized'
-" Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
@@ -33,7 +31,6 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-cucumber'
 Bundle 'gregsexton/gitv'
 Bundle 'Lokaltog/powerline'
-Bundle 'janx/vim-rubytest'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'skalnik/vim-vroom'
 Bundle 'tpope/vim-bundler'
@@ -42,12 +39,13 @@ Bundle 'tomasr/molokai'
 Bundle 'bling/vim-airline'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'szw/vim-tags'
-" Bundle 'wincent/Command-T'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'nielsmadan/harlequin'
-Bundle 'thoughtbot/vim-rspec'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'pgr0ss/vimux-ruby-test'
+Bundle 'jgdavey/vim-turbux'
+Bundle 'benmills/vimux'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'kassio/vim-tmux-runner'
@@ -55,10 +53,12 @@ Bundle 'lucapette/vim-jquery-doc'
 Bundle 'stephenmckinney/vim-dochub'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'endel/vim-github-colorscheme'
+Bundle 'othree/coffee-check.vim'
+Bundle 'croaky/vim-colors-github'
 " Bundle 'jaxbot/github-issues.vim'
-
-
-
+Bundle 'tpope/gem-ctags'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'wellle/tmux-complete.vim'
 Bundle 'henrik/vim-yaml-flattener'
 
 "Settings
@@ -76,9 +76,6 @@ au FocusGained * set relativenumber
 autocmd InsertEnter * set number
 autocmd InsertLeave * set relativenumber
 
-"Tagbar toggle
-nmap <F8> :TagbarToggle<CR>
-
 "Mouse enabled
 set mouse=a
 "Magic!
@@ -90,8 +87,8 @@ cmap w!! w !sudo tee % >/dev/null
 "Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
+map <C-l> <C-w><Left>
+map <C-h> <C-w><Right>
 
 "Ctags autogenerate
 " let g:vim_tags_auto_generate=1
@@ -154,7 +151,6 @@ map <C-n> :NERDTreeToggle<CR>
 " autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
 " autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
 "
-" nmap <F8> :TagbarToggle<CR>
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
@@ -171,9 +167,9 @@ colorscheme github
 nmap <leader>A <Esc>:Ack <c-r><c-w> app/<CR>
 "rubytest parameters
 
-map <Leader>\ <Plug>RubyTestRun     " change from <Leader>t to <Leader>\
-map <Leader>] <Plug>RubyFileRun     " change from <Leader>T to <Leader>]
-map <Leader>/ <Plug>RubyTestRunLast " change from <Leader>l to <Leader>/
+" map <Leader>r <Plug>RubyTestRun     " change from <Leader>t to <Leader>r
+" map <Leader>R <Plug>RubyFileRun     " change from <Leader>T to <Leader>R
+" map <Leader>rl <Plug>RubyTestRunLast " change from <Leader>l to <Leader>rl
 
 let g:rubytest_cmd_test = "ruby -ITest %p"
 let g:rubytest_cmd_testcase = "ruby -ITest %p -n '/%c/'"
@@ -182,7 +178,7 @@ let g:rubytest_cmd_example = "spec -f specdoc %p -e '%c'"
 let g:rubytest_cmd_feature = "cucumber %p"
 let g:rubytest_cmd_story = "cucumber %p -n '%c'"
 "Test results in quickfix
-let g:rubytest_in_quickfix = 1
+" let g:rubytest_in_quickfix = 1
 
 "Fast escape
 imap ;; <Esc>
@@ -268,3 +264,10 @@ let g:dochub_mapping='<Leader>-h'
 "Ack vim close quickfix window with ctrl + c
 " nnoremap <silent> <buffer><c-c> :ccl<CR>
 let g:github_upstream_issues=1
+let g:vimux_ruby_cmd_unit_test = "bundle exec ruby -Itest"
+let g:VimuxOrientation = "h"
+let g:coffeeCheckHighlightErrorLine = 1
+au BufRead,BufNewFile *.coffee set ft=coffee
+
+let g:vim_tags_auto_generate = 1
+let g:vim_tags_project_tags_command = "ctags -R ./"
