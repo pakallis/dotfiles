@@ -90,7 +90,10 @@ set backspace=2
 
 set background=dark
 set t_Co=256
-let g:solarized_termcolors=256
+let g:solarized_termcolors = 256
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:solarized_termtrans = 1
 set background=dark
 colorscheme solarized
 " fast search
