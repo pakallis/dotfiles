@@ -42,16 +42,41 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=/usr/local/sbt/bin:$PATH
 alias glog='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
-alias gs='git status '
 alias ga='git add '
 alias gb='git branch '
+alias gco='git checkout '
 alias gcom='git commit'
 alias gd='git diff'
+alias gf='git fetch '
 alias gl='git log'
-alias go='git checkout '
 alias gk='gitk --all&'
+alias gm='git merge '
+alias gp='git push'
+alias gr='git remote'
+alias gs='git status '
+alias gst='git stash'
 alias gx='gitx --all'
 
+#Rails aliases
+alias rdbm='rake db:migrate'
+alias rr='rake routes'
+alias rdbr='rake db:rollback'
+alias rdbms='rake db:migrate:status'
+alias rdbtp='rake db:test:prepare'
+alias rmaq='rake minitest:all:quick'
+alias rmaf='rake minitest:features'
+alias rtest='bundle exec ruby -ITest '
+alias rc='rails console'
+alias bi='bundle install'
+alias bu='bundle update'
+alias rd='rails destroy'
+alias rg='rails generate'
+alias rs='rails server'
+# other aliases
+alias grep='grep --color=always'
+alias c='clear'
+alias fs='foreman start'
+alias last='clear;!!'
 alias ..="cd .."
 alias ...="cd .. .."
 
@@ -63,6 +88,13 @@ PS1='[\W$(__git_ps1 " (%s)")]\$ '
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
 export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]\$(__git_ps1 ' %s')\[\033[01;34m\] \$\[\033[00m\] "
 
+# Git aliases
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.visual '!gitk'
 #Installer
 alias install='sudo apt-get install'
 alias remove='sudo apt-get remove'
@@ -71,5 +103,6 @@ alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 alias c='clear'
 alias l='ls'
 alias v='vim'
-alias gr='git remote'
+
+alias h='heroku'
 #TODO add shortcuts for curl

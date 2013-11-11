@@ -2,6 +2,7 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
+
 Bundle 'gmarik/vundle'
 Bundle 'Valloric/YouCompleteMe'
 "My Bundles
@@ -106,7 +107,7 @@ set shiftwidth=2
 set expandtab
 
 "Bash-like tab
-set wildmode=longest,list,full
+" set wildmode=longest,list,full
 set wildmenu
 
 "indenting

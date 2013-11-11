@@ -46,6 +46,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git osx ruby)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.bashrc
 
 # Customize to your needs...
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
