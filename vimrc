@@ -4,7 +4,6 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'Valloric/YouCompleteMe'
 "My Bundles
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-vividchalk'
@@ -46,11 +45,12 @@ Bundle 'mileszs/ack.vim'
 Bundle 'szw/vim-tags'
 Bundle 'majutsushi/tagbar'
 Bundle 'wincent/Command-T'
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'nielsmadan/harlequin'
 Bundle 'thoughtbot/vim-rspec'
+" Bundle 'henrik/vim-yaml-flattener'
 
 "Settings
 "Binding for greek characters
@@ -223,6 +223,14 @@ map <Leader>a :bprev<Return>
 map <Leader>s :bnext<Return>
 map <Leader>d :bd<Return>
 map <Leader>f :b
+
+" Fugitive shortcuts
+noremap ;gs :Gstatus<cr>
+noremap ;gc :Gcommit<cr>
+noremap ;gl :Glog<cr>
+noremap ;gd :Gdiff<cr>
+noremap ;gb :Gbrowse<cr>
+
 "" Show the buffer number in the status line.
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
