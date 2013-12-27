@@ -10,7 +10,7 @@ Bundle 'tpope/vim-vividchalk'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
+" Bundle 'majutsushi/tagbar'
 Bundle 'tomasr/molokai'
 
 "Snipmate dependencies
@@ -41,15 +41,14 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomasr/molokai'
 Bundle 'bling/vim-airline'
 Bundle 'fholgado/minibufexpl.vim'
-Bundle 'mileszs/ack.vim'
 Bundle 'szw/vim-tags'
-Bundle 'majutsushi/tagbar'
-Bundle 'wincent/Command-T'
-" Bundle 'Valloric/YouCompleteMe'
+" Bundle 'wincent/Command-T'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'nielsmadan/harlequin'
 Bundle 'thoughtbot/vim-rspec'
+Bundle 'christoomey/vim-tmux-navigator'
+
 " Bundle 'henrik/vim-yaml-flattener'
 
 "Settings
@@ -85,9 +84,9 @@ map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
 "Ctags autogenerate
-let g:vim_tags_auto_generate=1
+" let g:vim_tags_auto_generate=1
 "tags and ctrp key binding
-nnoremap <leader>. :CtrlPTag<cr>
+" nnoremap <leader>. :CtrlPTag<cr>
 
 "Background stuff
 syntax on
@@ -107,7 +106,6 @@ set shiftwidth=2
 set expandtab
 
 "Bash-like tab
-" set wildmode=longest,list,full
 set wildmenu
 
 "indenting
@@ -140,14 +138,14 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 "NerdTree
 map <C-n> :NERDTreeToggle<CR>
 
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
-autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
-
-nmap <F8> :TagbarToggle<CR>
+" autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+" autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
+"
+" nmap <F8> :TagbarToggle<CR>
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
@@ -161,16 +159,16 @@ let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
 set background=dark
 colorscheme solarized
-" fast search
-nmap <leader>A <Esc>:Ack <c-r><c-w><CR>
-""rubytest parameters
+"fast search
+nmap <leader>A <Esc>:Ack <c-r><c-w> app/<CR>
+"rubytest parameters
 
 map <Leader>\ <Plug>RubyTestRun     " change from <Leader>t to <Leader>\
 map <Leader>] <Plug>RubyFileRun     " change from <Leader>T to <Leader>]
 map <Leader>/ <Plug>RubyTestRunLast " change from <Leader>l to <Leader>/
 
-let g:rubytest_cmd_test = "bundle exec ruby %p"
-let g:rubytest_cmd_testcase = "bundle exec ruby %p -n '/%c/'"
+let g:rubytest_cmd_test = "ruby -ITest %p"
+let g:rubytest_cmd_testcase = "ruby -ITest %p -n '/%c/'"
 let g:rubytest_cmd_spec = "spec -f specdoc %p"
 let g:rubytest_cmd_example = "spec -f specdoc %p -e '%c'"
 let g:rubytest_cmd_feature = "cucumber %p"
@@ -205,19 +203,16 @@ nmap ;q :q!<cr>
 "More history
 set history=1000
 
-"bash-like tab autocompletion
-set wildmode=list:longest
-
 "Scroll 3 lines per C-e or C-y
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
 "No annoying message Press ENTER or type command to continue
-set shortmess=atI
+" set shortmess=atI
 
 "Buffer command-t bindings
 "Tab triggers buffer-name auto-completion
-set wildchar=<Tab> wildmenu wildmode=full
+set wildchar=<Tab> wildmenu wildmode=list:longest
 map <Leader>t :CommandT<Return>
 map <Leader>a :bprev<Return>
 map <Leader>s :bnext<Return>
@@ -232,21 +227,32 @@ noremap ;gd :Gdiff<cr>
 noremap ;gb :Gbrowse<cr>
 
 "" Show the buffer number in the status line.
-set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+" set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 " Show whitespace chars
 set list
 
 " Strip trailing whitespace
-function! <SID>StripTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  %s/\s\+$//e
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" function! <SID>StripTrailingWhitespaces()
+"   " Preparation: save last search, and cursor position.
+"   let _s=@/
+"   let l = line(".")
+"   let c = col(".")
+"   " Do the business:
+"   %s/\s\+$//e
+"   " Clean up: restore previous search history, and cursor position
+"   let @/=_s
+"   call cursor(l, c)
+" endfunction
+" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"
+" Ignore some folders and files for faster indexing in CtrlP
+" let g:ctrlp_custom_ignore = '\.git$\|\.sass-cache$|\.hg$\|\.svn$\|\.yardoc\|public$|log\|tmp$|\.so$|\.dat$|\.DS_Store\|\.swp'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*tags*
+" let g:ctrlp_working_path_mode = 0
+"
+"ctrlp stuff
+let g:ctrlp_use_caching=1
+let g:ctrlp_clear_cache_on_exit=0
+"Ack vim close quickfix window with ctrl + c
+" nnoremap <silent> <buffer><c-c> :ccl<CR>
