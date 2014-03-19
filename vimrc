@@ -48,6 +48,11 @@ Bundle 'tpope/vim-vividchalk'
 Bundle 'nielsmadan/harlequin'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'jgdavey/tslime.vim'
+Bundle 'mattn/emmet-vim'
+Bundle 'kassio/vim-tmux-runner'
+
+
 
 " Bundle 'henrik/vim-yaml-flattener'
 
@@ -98,7 +103,6 @@ if has('gui_running')
 else
   set background=dark
 endif
-colorscheme solarized
 let mapleader = ","
 " Whitespace
 set tabstop=2
@@ -132,7 +136,7 @@ filetype plugin indent on
 let g:EasyMotion_leader_key = '<Leader>'
 
 "CTRL-P
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 
 "NerdTree
@@ -158,7 +162,7 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
 set background=dark
-colorscheme solarized
+colorscheme Tomorrow-Night
 "fast search
 nmap <leader>A <Esc>:Ack <c-r><c-w> app/<CR>
 "rubytest parameters
@@ -233,26 +237,27 @@ noremap ;gb :Gbrowse<cr>
 set list
 
 " Strip trailing whitespace
-" function! <SID>StripTrailingWhitespaces()
-"   " Preparation: save last search, and cursor position.
-"   let _s=@/
-"   let l = line(".")
-"   let c = col(".")
-"   " Do the business:
-"   %s/\s\+$//e
-"   " Clean up: restore previous search history, and cursor position
-"   let @/=_s
-"   call cursor(l, c)
-" endfunction
-" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-"
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
 " Ignore some folders and files for faster indexing in CtrlP
 " let g:ctrlp_custom_ignore = '\.git$\|\.sass-cache$|\.hg$\|\.svn$\|\.yardoc\|public$|log\|tmp$|\.so$|\.dat$|\.DS_Store\|\.swp'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*tags*
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*tags*
 " let g:ctrlp_working_path_mode = 0
 "
 "ctrlp stuff
-let g:ctrlp_use_caching=1
-let g:ctrlp_clear_cache_on_exit=0
+" let g:ctrlp_use_caching=1
+" let g:ctrlp_clear_cache_on_exit=0
+"send command to tmux
 "Ack vim close quickfix window with ctrl + c
 " nnoremap <silent> <buffer><c-c> :ccl<CR>
