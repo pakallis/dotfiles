@@ -1,4 +1,5 @@
 # Do not send control keys to terminal. I did this for vim to work with ctrl+s
+export EDITOR=/usr/bin/vim
 stty start undef stop undef
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 alias c='clear'
@@ -40,23 +41,27 @@ alias gno='gnome-open'
 export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH=/usr/local/sbt/bin:$PATH
-alias glog='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias ga='git add '
 alias gb='git branch '
 alias gco='git checkout '
-alias gcom='git commit'
+alias gcom='git commit --verbose'
+alias fixup='git commit --fixup'
 alias gd='git diff'
 alias gf='git fetch '
 alias gl='git log'
 alias gk='gitk --all&'
 alias gm='git merge '
+alias grb='git rebase'
 alias gp='git push'
+alias pushtostaging="git push -f staging $(git rev-parse --abvrev-ref HEAD):master"
 alias gr='git remote'
 alias gs='git status '
 alias gst='git stash'
 alias gx='gitx --all'
-
+alias pushup=push_to_upstream
+alias deploy='git push production upstream/master'
 #Rails aliases
 alias rdbm='zeus rake db:migrate'
 alias rr='zeus rake routes'
@@ -104,6 +109,27 @@ alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 alias c='clear'
 alias l='ls'
 alias v='vim'
+alias testme="git push upstream -f HEAD:jenkins/pavlos"
+alias rtsp="rake teaspoon"
+alias tsp="teaspoon"
 
 alias h='heroku'
+alias rbcp='rubocop -R'
+alias cflnt='coffeelint'
+LANG=en_EN.utf8
+export LANG
+
+function push_to_upstream {
+branch=$(git rev-parse --abbrev-ref HEAD)
+  if [ $branch = "master" ]; then
+    echo 'Do not push to master'
+  else
+    echo "Pushing to upstream/$branch..."
+    git push -f upstream $branch
+  fi
+}
+function fname {
+  find . -iname "*$@*"
+}
+
 #TODO add shortcuts for curl

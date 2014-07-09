@@ -51,10 +51,15 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'kassio/vim-tmux-runner'
+Bundle 'lucapette/vim-jquery-doc'
+Bundle 'stephenmckinney/vim-dochub'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'endel/vim-github-colorscheme'
+" Bundle 'jaxbot/github-issues.vim'
 
 
 
-" Bundle 'henrik/vim-yaml-flattener'
+Bundle 'henrik/vim-yaml-flattener'
 
 "Settings
 "Binding for greek characters
@@ -161,8 +166,7 @@ let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
-set background=dark
-colorscheme Tomorrow-Night
+colorscheme github
 "fast search
 nmap <leader>A <Esc>:Ack <c-r><c-w> app/<CR>
 "rubytest parameters
@@ -250,6 +254,8 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+let g:dochub_mapping='<Leader>-h'
+
 " Ignore some folders and files for faster indexing in CtrlP
 " let g:ctrlp_custom_ignore = '\.git$\|\.sass-cache$|\.hg$\|\.svn$\|\.yardoc\|public$|log\|tmp$|\.so$|\.dat$|\.DS_Store\|\.swp'
 " set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*tags*
@@ -261,3 +267,4 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 "send command to tmux
 "Ack vim close quickfix window with ctrl + c
 " nnoremap <silent> <buffer><c-c> :ccl<CR>
+let g:github_upstream_issues=1
