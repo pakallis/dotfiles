@@ -29,8 +29,7 @@ alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 
 ## get top process eating cpu ##
-alias pscpu='ps auxf | sort -nr -k 3'
-alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+alias pscpu='ps auxf | sort -nr -k 3' alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
 ## Get server cpu info ##
 alias cpuinfo='lscpu'
@@ -135,6 +134,30 @@ function fname {
   find . -iname "*$@*"
 }
 
+function starttmux {
+  tmux start-server
+  tmux new-session -d -s rails -n vim
+  tmux split-window -t rails:1 -h
+  tmux send-keys -t rails:1 "rails console" C-m
+  tmux new-window -t rails:2 -n server
+  tmux send-keys -t rails:2 "foreman run rails server" C-m
+  tmux split-window -t rails -h
+  tmux send-keys -t rails:2 "tail -f log/development.log" C-m
+  tmux new-window -t rails:3 -n zeus
+  tmux send-keys -t rails:3 "zeus start" C-m
+  tmux select-window -t rails:1
+  tmux -2 attach-session -t rails
+  sleep 1
+  tmux select-pane -t 1
+  tmux resize-pane -t 1 -R 20
+}
+
+function runttest {
+  tmux select-pane -t 2
+  tmux send-keys "rdbtp" C-m
+  tmux send-keys "rmaq" C-m
+  tmux select-pane -t 1
+}
 #TODO add shortcuts for curl
 alias tmux="tmux -2"
 export PYTHONSTARTUP=/home/pakallis/.pythonrc
