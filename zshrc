@@ -64,10 +64,7 @@ git config --global alias.st status
 git config --global alias.unstage 'reset HEAD --'
 git config --global alias.visual '!gitk'
 
-<<<<<<< HEAD
-=======
 alias g='git'
->>>>>>> Added zshrc from remote branch
 alias ga='git add '
 alias gs='git status'
 alias gco='git checkout '

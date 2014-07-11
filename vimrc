@@ -58,7 +58,7 @@ Bundle 'endel/vim-github-colorscheme'
 Bundle 'othree/coffee-check.vim'
 Bundle 'croaky/vim-colors-github'
 " Bundle 'jaxbot/github-issues.vim'
-Bundle 'tpope/gem-ctags'
+" Bundle 'tpope/gem-ctags'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'wellle/tmux-complete.vim'
 Bundle 'henrik/vim-yaml-flattener'
@@ -271,5 +271,5 @@ let g:VimuxOrientation = "h"
 let g:coffeeCheckHighlightErrorLine = 1
 au BufRead,BufNewFile *.coffee set ft=coffee
 
-let g:vim_tags_auto_generate = 1
-let g:vim_tags_project_tags_command = "ctags -R ./"
+" let g:vim_tags_auto_generate = 1
+" let g:vim_tags_project_tags_command = "ctags -R ./"
