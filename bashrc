@@ -118,8 +118,12 @@ alias tsp="teaspoon"
 alias h='heroku'
 alias rbcp='rubocop -R'
 alias cflnt='coffeelint'
-LANG=en_EN.utf8
+LANG="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
 export LANG
+export LC_CTYPE
+export LC_ALL
 
 function push_to_upstream {
 branch=$(git rev-parse --abbrev-ref HEAD)

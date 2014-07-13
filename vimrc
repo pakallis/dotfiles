@@ -86,12 +86,6 @@ nnoremap ; :
 "Sudo edit
 cmap w!! w !sudo tee % >/dev/null
 
-"Map ctrl-movement keys to window switching
-map <C-k> <C-w><Up>
-map <C-j> <C-w><Down>
-map <C-l> <C-w><Left>
-map <C-h> <C-w><Right>
-
 "Ctags autogenerate
 " let g:vim_tags_auto_generate=1
 "tags and ctrp key binding
@@ -101,7 +95,7 @@ map <C-h> <C-w><Right>
 syntax on
 set background=dark
 let g:solarized_termcolors=256
-" set t_Co=256
+set t_Co=256
 if has('gui_running')
   set background=light
 else
@@ -159,12 +153,12 @@ map gd :bd<cr>
 set backspace=2
 
 set background=dark
-set t_Co=256
-let g:solarized_termcolors = 256
+" set t_Co=256
+" let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
-colorscheme github
+colorscheme molokai
 "fast search
 nmap <leader>A <Esc>:Ack <c-r><c-w> app/<CR>
 "rubytest parameters
@@ -260,7 +254,7 @@ let g:dochub_mapping='<Leader>-h'
 " let g:ctrlp_working_path_mode = 0
 "
 "ctrlp stuff
-" let g:ctrlp_use_caching=1
+let g:ctrlp_use_caching=1
 " let g:ctrlp_clear_cache_on_exit=0
 "send command to tmux
 "Ack vim close quickfix window with ctrl + c
@@ -270,6 +264,7 @@ let g:vimux_ruby_cmd_unit_test = "bundle exec ruby -Itest"
 let g:VimuxOrientation = "h"
 let g:coffeeCheckHighlightErrorLine = 1
 au BufRead,BufNewFile *.coffee set ft=coffee
+au BufRead,BufNewFile *.ejs set ft=html
 
 " let g:vim_tags_auto_generate = 1
 " let g:vim_tags_project_tags_command = "ctags -R ./"

@@ -43,7 +43,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx ruby)
+plugins=(tmux git osx ruby)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.bashrc
@@ -54,7 +54,9 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR=vim
-alias vim="/usr/local/Cellar/macvim/7.4-71/MacVim.app/Contents/MacOS/Vim"
+# if [[ uname != 'Linux' ]]; then
+#   alias vim="/usr/local/Cellar/macvim/7.4-71/MacVim.app/Contents/MacOS/Vim"
+# fi
 
 # Git aliases
 git config --global alias.co checkout
@@ -96,7 +98,4 @@ alias grep='grep --color=always'
 alias c='clear'
 alias fs='foreman start'
 alias last='clear;!!'
-
-
-
-
+bindkey -v
