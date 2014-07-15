@@ -31,7 +31,7 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'gregsexton/gitv'
 Bundle 'Lokaltog/powerline'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'skalnik/vim-vroom'
+" Bundle 'skalnik/vim-vroom'
 Bundle 'tpope/vim-bundler'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
@@ -40,18 +40,13 @@ Bundle 'szw/vim-tags'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'nielsmadan/harlequin'
 Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'pgr0ss/vimux-ruby-test'
+" Bundle 'pgr0ss/vimux-ruby-test'
 Bundle 'jgdavey/vim-turbux'
 Bundle 'benmills/vimux'
-Bundle 'jgdavey/tslime.vim'
+" Bundle 'jgdavey/tslime.vim'
 Bundle 'mattn/emmet-vim'
 
-" Enable only for html/css
-let g:user_emmet_install_global = 0
-" Remap default key
-let g:user_emmet_leader_key='<C-p>'
-autocmd FileType html,css EmmetInstall
-Bundle 'kassio/vim-tmux-runner'
+" Bundle 'kassio/vim-tmux-runner'
 Bundle 'lucapette/vim-jquery-doc'
 Bundle 'stephenmckinney/vim-dochub'
 Bundle 'endel/vim-github-colorscheme'
@@ -60,9 +55,14 @@ Bundle 'croaky/vim-colors-github'
 " Bundle 'jaxbot/github-issues.vim'
 " Bundle 'tpope/gem-ctags'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'wellle/tmux-complete.vim'
+" Bundle 'wellle/tmux-complete.vim'
 Bundle 'henrik/vim-yaml-flattener'
 
+" Enable only for html/css
+let g:user_emmet_install_global = 0
+" Remap default key
+let g:user_emmet_leader_key='<C-p>'
+autocmd FileType html,css EmmetInstall
 "Settings
 "Binding for greek characters
 set keymap=greek_utf-8
@@ -249,22 +249,31 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 let g:dochub_mapping='<Leader>-h'
 
 " Ignore some folders and files for faster indexing in CtrlP
-" let g:ctrlp_custom_ignore = '\.git$\|\.sass-cache$|\.hg$\|\.svn$\|\.yardoc\|public$|log\|tmp$|\.so$|\.dat$|\.DS_Store\|\.swp'
-" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*tags*
+"
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*,*.so,*.swp,*tags*,*/public/*
+
+let g:ctrlp_custom_ignore = 'tmp$\|\.git$\|\.hg$\|\.svn$\|.rvm$|.bundle$\|vendor|public'
 " let g:ctrlp_working_path_mode = 0
 "
 "ctrlp stuff
 let g:ctrlp_use_caching=1
-" let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=25
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_clear_cache_on_exit=0
+
 "send command to tmux
 "Ack vim close quickfix window with ctrl + c
 " nnoremap <silent> <buffer><c-c> :ccl<CR>
 let g:github_upstream_issues=1
-let g:vimux_ruby_cmd_unit_test = "bundle exec ruby -Itest"
-let g:VimuxOrientation = "h"
+" let g:vimux_ruby_cmd_unit_test = "bundle exec m"
+" let g:VimuxOrientation = "h"
 let g:coffeeCheckHighlightErrorLine = 1
 au BufRead,BufNewFile *.coffee set ft=coffee
 au BufRead,BufNewFile *.ejs set ft=html
 
+let g:turbux_command_test_unit = 'ruby -Itest'
 " let g:vim_tags_auto_generate = 1
 " let g:vim_tags_project_tags_command = "ctags -R ./"
