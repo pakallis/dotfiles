@@ -55,7 +55,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR=vim
 # if [[ uname != 'Linux' ]]; then
-#   alias vim="/usr/local/Cellar/macvim/7.4-71/MacVim.app/Contents/MacOS/Vim"
+# alias vim="/usr/local/Cellar/macvim/7.4.430_1/MacVim.app/Contents/MacOS/Vim"
 # fi
 
 # Git aliases
@@ -98,4 +98,3 @@ alias grep='grep --color=always'
 alias c='clear'
 alias fs='foreman start'
 alias last='clear;!!'
-bindkey -v

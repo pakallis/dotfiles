@@ -7,62 +7,59 @@ Bundle 'gmarik/vundle'
 "My Bundles
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-vividchalk'
-Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdtree'
+" Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tomasr/molokai'
 
 "Snipmate dependencies
-Bundle 'vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tmhedberg/matchit'
 Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/neocomplcache.vim'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-cucumber'
-Bundle 'gregsexton/gitv'
+Bundle 'tpope/vim-rails'
+" Bundle 'tpope/vim-cucumber'
 Bundle 'Lokaltog/powerline'
-Bundle 'tpope/vim-unimpaired'
-" Bundle 'skalnik/vim-vroom'
 Bundle 'tpope/vim-bundler'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'bling/vim-airline'
-Bundle 'fholgado/minibufexpl.vim'
-Bundle 'szw/vim-tags'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'nielsmadan/harlequin'
 Bundle 'christoomey/vim-tmux-navigator'
-" Bundle 'pgr0ss/vimux-ruby-test'
-Bundle 'jgdavey/vim-turbux'
-Bundle 'benmills/vimux'
-" Bundle 'jgdavey/tslime.vim'
-Bundle 'mattn/emmet-vim'
+Bundle 'mattn/webapi-vim'
+Bundle 'mmozuras/vim-github-comment'
+" Bundle 'mattn/emmet-vim'
 
-" Bundle 'kassio/vim-tmux-runner'
-Bundle 'lucapette/vim-jquery-doc'
-Bundle 'stephenmckinney/vim-dochub'
-Bundle 'endel/vim-github-colorscheme'
-Bundle 'othree/coffee-check.vim'
 Bundle 'croaky/vim-colors-github'
-" Bundle 'jaxbot/github-issues.vim'
-" Bundle 'tpope/gem-ctags'
-Bundle 'airblade/vim-gitgutter'
-" Bundle 'wellle/tmux-complete.vim'
-Bundle 'henrik/vim-yaml-flattener'
+" Bundle 'henrik/vim-yaml-flattener'
+" Bundle 'lucapette/vim-ruby-doc'
+"
+"
+" Bundle 'gregsexton/gitv'
+" Bundle 'nielsmadan/harlequin'
+" Bundle 'fholgado/minibufexpl.vim'
+" Bundle 'Shougo/neocomplcache.vim'
+" Bundle 'scrooloose/nerdtree'
+" Bundle 'tomtom/tlib_vim'
+" Bundle 'vim-addon-mw-utils'
+Bundle 'bling/vim-airline'
+" Bundle 'altercation/vim-colors-solarized'
+" Bundle 'stephenmckinney/vim-dochub'
+" Bundle 'tpope/vim-git'
+" Bundle 'airblade/vim-gitgutter'
+" Bundle 'endel/vim-github-colorscheme'
+" Bundle 'tpope/vim-haml'
+" Bundle 'lucapette/vim-jquery-doc'
+" Bundle 'tpope/vim-repeat'
+" Bundle 'garbas/vim-snipmate'
+" Bundle 'szw/vim-tags'
+" Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'jgdavey/vim-turbux'
+" Bundle 'tpope/vim-unimpaired'
+Bundle 'benmills/vimux'
 
 " Enable only for html/css
-let g:user_emmet_install_global = 0
+" let g:user_emmet_install_global = 0
 " Remap default key
-let g:user_emmet_leader_key='<C-p>'
-autocmd FileType html,css EmmetInstall
+" let g:user_emmet_leader_key='<C-p>'
+" autocmd FileType html,css EmmetInstall
 "Settings
 "Binding for greek characters
 set keymap=greek_utf-8
@@ -126,7 +123,6 @@ filetype plugin indent on
 " set iminsert=0
 " set imsearch=-1
 
-filetype plugin indent on
 "
 "Easymotion
 
@@ -210,14 +206,12 @@ nnoremap <C-y> 3<C-y>
 "No annoying message Press ENTER or type command to continue
 " set shortmess=atI
 
-"Buffer command-t bindings
 "Tab triggers buffer-name auto-completion
-set wildchar=<Tab> wildmenu wildmode=list:longest
-map <Leader>t :CommandT<Return>
-map <Leader>a :bprev<Return>
-map <Leader>s :bnext<Return>
-map <Leader>d :bd<Return>
-map <Leader>f :b
+" set wildchar=<Tab> wildmenu wildmode=list:longest
+" map <Leader>a :bprev<Return>
+" map <Leader>s :bnext<Return>
+" map <Leader>d :bd<Return>
+" map <Leader>f :b
 
 " Fugitive shortcuts
 noremap ;gs :Gstatus<cr>
@@ -233,24 +227,19 @@ noremap ;gb :Gbrowse<cr>
 set list
 
 " Strip trailing whitespace
-function! <SID>StripTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
+fun! StripTrailingWhiteSpace()
+  if &ft =~ 'sql'
+    return
+  endif
   %s/\s\+$//e
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+endfun
+autocmd BufWritePre * call StripTrailingWhiteSpace()
 
 let g:dochub_mapping='<Leader>-h'
 
 " Ignore some folders and files for faster indexing in CtrlP
 "
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*,*.so,*.swp,*tags*,*/public/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*.so,*.swp,*tags*,*/public/*
 
 let g:ctrlp_custom_ignore = 'tmp$\|\.git$\|\.hg$\|\.svn$\|.rvm$|.bundle$\|vendor|public'
 " let g:ctrlp_working_path_mode = 0
@@ -264,16 +253,30 @@ let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_clear_cache_on_exit=0
 
+let g:github_user = 'pakallis'
+let g:github_comment_open_browser = 1
 "send command to tmux
 "Ack vim close quickfix window with ctrl + c
 " nnoremap <silent> <buffer><c-c> :ccl<CR>
 let g:github_upstream_issues=1
 " let g:vimux_ruby_cmd_unit_test = "bundle exec m"
 " let g:VimuxOrientation = "h"
-let g:coffeeCheckHighlightErrorLine = 1
+" let g:coffeeCheckHighlightErrorLine = 1
 au BufRead,BufNewFile *.coffee set ft=coffee
 au BufRead,BufNewFile *.ejs set ft=html
 
-let g:turbux_command_test_unit = 'ruby -Itest'
+let g:turbux_command_test_unit = 'm'
 " let g:vim_tags_auto_generate = 1
 " let g:vim_tags_project_tags_command = "ctags -R ./"
+
+let g:jquery_doc_command='open'
+
+let g:ruby_doc_ruby_host='http://apidock.com/ruby/'
+let g:ruby_doc_command='open'
+
+let g:jquery_doc_mapping='TT'
+let g:jquery_doc_command='open'
+let @d='odebugger'
+let @s='obinding.pry'
+let @r="opage.save_screenshot '1.png'"
+set shell=/bin/sh
