@@ -98,3 +98,5 @@ alias grep='grep --color=always'
 alias c='clear'
 alias fs='foreman start'
 alias last='clear;!!'
+bindkey -v
+bindkey '^R' history-incremental-search-backward

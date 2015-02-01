@@ -53,6 +53,8 @@ Bundle 'bling/vim-airline'
 " Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'jgdavey/vim-turbux'
 " Bundle 'tpope/vim-unimpaired'
+Bundle 'pakallis/vim-turbux'
+" Bundle 'pgr0ss/vimux-ruby-test'
 Bundle 'benmills/vimux'
 
 " Enable only for html/css
@@ -163,12 +165,12 @@ nmap <leader>A <Esc>:Ack <c-r><c-w> app/<CR>
 " map <Leader>R <Plug>RubyFileRun     " change from <Leader>T to <Leader>R
 " map <Leader>rl <Plug>RubyTestRunLast " change from <Leader>l to <Leader>rl
 
-let g:rubytest_cmd_test = "ruby -ITest %p"
-let g:rubytest_cmd_testcase = "ruby -ITest %p -n '/%c/'"
-let g:rubytest_cmd_spec = "spec -f specdoc %p"
-let g:rubytest_cmd_example = "spec -f specdoc %p -e '%c'"
-let g:rubytest_cmd_feature = "cucumber %p"
-let g:rubytest_cmd_story = "cucumber %p -n '%c'"
+" let g:rubytest_cmd_test = 'ruby -ITest %p'
+" let g:rubytest_cmd_testcase = 'ruby -ITest %p -n '/%c/''
+" let g:rubytest_cmd_spec = 'spec -f specdoc %p'
+" let g:rubytest_cmd_example = 'spec -f specdoc %p -e '%c''
+" let g:rubytest_cmd_feature = 'cucumber %p'
+" let g:rubytest_cmd_story = 'cucumber %p -n '%c''
 "Test results in quickfix
 " let g:rubytest_in_quickfix = 1
 
@@ -190,7 +192,7 @@ nmap <Leader>v :e $MYVIMRC
 nmap <silent> ,/ :nohlsearch<CR>
 
 "Copy/paste from/to clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 "Fast save
 nmap ;w :w!<cr>
@@ -266,6 +268,7 @@ au BufRead,BufNewFile *.coffee set ft=coffee
 au BufRead,BufNewFile *.ejs set ft=html
 
 let g:turbux_command_test_unit = 'm'
+let g:turbux_test_type = 'minitest'
 " let g:vim_tags_auto_generate = 1
 " let g:vim_tags_project_tags_command = "ctags -R ./"
 

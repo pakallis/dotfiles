@@ -2,6 +2,7 @@
 export EDITOR=/usr/bin/vim
 stty start undef stop undef
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/npm/bin # Add npm to PATH for frontend development
 alias c='clear'
 ## a quick way to get out of current directory ##
 alias ..='cd ..'
@@ -170,3 +171,10 @@ function runttest {
 #TODO add shortcuts for curl
 alias tmux="tmux -2"
 export PYTHONSTARTUP=/home/pakallis/.pythonrc
+export NODE_PATH=/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript:/home/pakallis/npm/lib/node_modules
+
+
+# Node dev
+
+alias grub='grunt build'
+alias grus='grunt server'
