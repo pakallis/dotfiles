@@ -48,7 +48,7 @@ alias gb='git branch '
 alias gco='git checkout '
 alias gcom='git commit --verbose'
 alias fixup='git commit --fixup'
-alias gd='git diff'
+alias gd='git diff --word-diff'
 alias gf='git fetch '
 alias gl='git log'
 alias gk='gitk --all&'
@@ -178,3 +178,8 @@ export NODE_PATH=/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript:/ho
 
 alias grub='grunt build'
 alias grus='grunt server'
+
+if [ ! $(uname -s) = "Darwin" ]; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi

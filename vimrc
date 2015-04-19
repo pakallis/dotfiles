@@ -228,14 +228,10 @@ noremap ;gb :Gbrowse<cr>
 " Show whitespace chars
 set list
 
+" Remove any trailing whitespace that is in the file
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+
 " Strip trailing whitespace
-fun! StripTrailingWhiteSpace()
-  if &ft =~ 'sql'
-    return
-  endif
-  %s/\s\+$//e
-endfun
-autocmd BufWritePre * call StripTrailingWhiteSpace()
 
 let g:dochub_mapping='<Leader>-h'
 
@@ -283,3 +279,23 @@ let @d='odebugger'
 let @s='obinding.pry'
 let @r="opage.save_screenshot '1.png'"
 set shell=/bin/sh
+
+"{{{ Todo List Mode
+
+function! TodoListMode()
+   e ~/.todo.otl
+   set foldlevel=1
+   tabnew ~/.notes.txt
+   tabfirst
+   " or 'norm! zMzr'
+endfunction
+
+"}}}
+
+nnoremap <silent> <Leader>todo :execute TodoListMode()<CR>
+
+function! PasteAsCoffee()
+  :read !pbpaste | js2coffee
+endfunction
+:command! PasteAsCoffee :call PasteAsCoffee()
+:map <leader>pc :PasteAsCoffee<CR>
