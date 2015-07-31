@@ -65,31 +65,32 @@ alias pushup=push_to_upstream
 alias deployproduction='git push production upstream/master:master'
 alias deploymigrations='git push migrations upstream/master:master'
 #Rails aliases
-alias rdbm='zeus rake db:migrate'
-alias rr='zeus rake routes'
-alias rdbr='zeus rake db:rollback'
-alias rdbms='zeus rake db:migrate:status'
-alias rdbtp='zeus rake db:test:prepare'
-alias rdbmd='zeus rake db:migrate:down'
-alias rmaq='rdbtp && zeus rake minitest:all:quick'
-alias rmaf='rake minitest:features'
-alias rtest='bundle exec ruby -Itest '
-alias rc='zeus c || foreman run rails c || rails c'
-alias frrc='foreman run rails c'
-alias b='bundle'
-alias rk='rake'
+alias rdbm='bin/rake db:migrate'
+alias rr='bin/rake routes'
+alias rdbr='bin/rake db:rollback'
+alias rdbms='bin/rake db:migrate:status'
+alias rdbtp='bin/rake db:test:prepare'
+alias rdbmd='bin/rake db:migrate:down'
+# rdbms | ack "journeys" | awk 'END { print $2 }'
+alias rmaq='rdbtp && bin/rake minitest:all:quick'
+alias testall='bin/rake test:all'
+alias rmaf='bin/rake minitest:features'
+alias rtest='bin/bundle exec ruby -Itest '
+alias rc='bin/rails c'
+alias frrc='foreman run bin/rails c'
+alias b='bin/bundle'
+alias rk='bin/rake'
 alias t="ruby -I test"
-alias bi='bundle install'
-alias bu='bundle update'
-alias be='bundle exec'
-alias rd='rails destroy'
-alias rg='rails generate'
-alias rs='rails server'
+alias bi='bin/bundle install'
+alias bu='bin/bundle update'
+alias be='bin/bundle exec'
+alias rg='bin/rails generate'
+alias rs='bin/rails server'
 # other aliases
 alias grep='grep --color=always'
 alias c='clear'
 alias fs='foreman start'
-alias frrs='foreman run rails server'
+alias frrs='foreman run bin/rails server'
 alias last='clear;!!'
 alias ..="cd .."
 alias ...="cd .. .."
@@ -144,29 +145,16 @@ function fname {
   find . -iname "*$@*"
 }
 
-function starttmux {
-  tmux start-server
-  tmux new-session -d -s rails -n vim
-  tmux split-window -t rails:1 -h
-  tmux send-keys -t rails:1 "rails console" C-m
-  tmux new-window -t rails:2 -n server
-  tmux send-keys -t rails:2 "foreman run rails server" C-m
-  tmux split-window -t rails -h
-  tmux send-keys -t rails:2 "tail -f log/development.log" C-m
-  tmux new-window -t rails:3 -n zeus
-  tmux send-keys -t rails:3 "zeus start" C-m
-  tmux select-window -t rails:1
-  tmux -2 attach-session -t rails
-  sleep 1
-  tmux select-pane -t 1
-  tmux resize-pane -t 1 -R 20
-}
-
 function runttest {
   tmux select-pane -t 2
   tmux send-keys "rdbtp" C-m
   tmux send-keys "rmaq" C-m
   tmux select-pane -t 1
+}
+
+function deployproduction {
+  git push production upstream/master:master
+  heroku restart --remote production
 }
 #TODO add shortcuts for curl
 alias tmux="tmux -2"
@@ -183,3 +171,4 @@ if [ ! $(uname -s) = "Darwin" ]; then
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
 fi
+alias gg='git grep'

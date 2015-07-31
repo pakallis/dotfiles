@@ -10,11 +10,14 @@ Bundle 'tpope/vim-vividchalk'
 " Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tomasr/molokai'
-
+Bundle "AndrewRadev/splitjoin.vim"
+Bundle "AndrewRadev/switch.vim"
 "Snipmate dependencies
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tmhedberg/matchit'
+" Bundle 'samsonw/vim-task'
+Bundle 'neilagabriel/vim-geeknote'
 Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-fugitive'
@@ -187,6 +190,7 @@ nmap Q gqap
 "vimrc stuff
 nmap <Leader>s :source $MYVIMRC
 nmap <Leader>v :e $MYVIMRC
+nmap <Leader>p :. !pbpaste<CR>
 
 "Clear search history when you press <Leader>/
 nmap <silent> ,/ :nohlsearch<CR>
@@ -263,8 +267,8 @@ let g:github_upstream_issues=1
 au BufRead,BufNewFile *.coffee set ft=coffee
 au BufRead,BufNewFile *.ejs set ft=html
 
-let g:turbux_command_test_unit = 'm'
 let g:turbux_test_type = 'minitest'
+let g:turbux_command_test_unit = 'ruby -ITest'
 " let g:vim_tags_auto_generate = 1
 " let g:vim_tags_project_tags_command = "ctags -R ./"
 
@@ -278,6 +282,9 @@ let g:jquery_doc_command='open'
 let @d='odebugger'
 let @s='obinding.pry'
 let @r="opage.save_screenshot '1.png'"
+let @h="wi_html"
+let @t='Otime=(new Date()).getTime()<Esc>joconsole.log((new Date()).getTime() - time)'
+let @c='oconsole.log("hello")'
 set shell=/bin/sh
 
 "{{{ Todo List Mode

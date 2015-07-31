@@ -53,7 +53,6 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-export EDITOR=vim
 # if [[ uname != 'Linux' ]]; then
 # alias vim="/usr/local/Cellar/macvim/7.4.430_1/MacVim.app/Contents/MacOS/Vim"
 # fi
@@ -97,6 +96,7 @@ alias rc='rails console'
 alias grep='grep --color=always'
 alias c='clear'
 alias fs='foreman start'
+alias vim='/usr/bin/vim'
 alias last='clear;!!'
 bindkey -v
 bindkey '^R' history-incremental-search-backward
