@@ -6,6 +6,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 "My Bundles
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'tpope/vim-vividchalk'
 " Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
@@ -16,12 +17,15 @@ Bundle 'mustache/vim-mustache-handlebars'
 "Snipmate dependencies
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
+Bundle 'szw/vim-tags'
+Bundle 'neilagabriel/vim-geeknote'
 Bundle 'tmhedberg/matchit'
 " Bundle 'samsonw/vim-task'
 Bundle 'neilagabriel/vim-geeknote'
 Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-fugitive'
+Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-rails'
 " Bundle 'tpope/vim-cucumber'
 Bundle 'Lokaltog/powerline'
@@ -88,11 +92,6 @@ nnoremap ; :
 
 "Sudo edit
 cmap w!! w !sudo tee % >/dev/null
-
-"Ctags autogenerate
-" let g:vim_tags_auto_generate=1
-"tags and ctrp key binding
-" nnoremap <leader>. :CtrlPTag<cr>
 
 "Background stuff
 syntax on
@@ -271,6 +270,7 @@ au BufRead,BufNewFile *.ejs set ft=html
 let g:turbux_test_type = 'minitest'
 let g:turbux_command_test_unit = 'ruby -ITest'
 " let g:vim_tags_auto_generate = 1
+let g:vim_tags_auto_generate = 1
 " let g:vim_tags_project_tags_command = "ctags -R ./"
 
 let g:jquery_doc_command='open'

@@ -166,9 +166,23 @@ export NODE_PATH=/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript:/ho
 
 alias grub='grunt build'
 alias grus='grunt server'
+alias gg='git grep'
 
 if [ ! $(uname -s) = "Darwin" ]; then
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
 fi
-alias gg='git grep'
+
+# Docker
+
+alias dl='docker ps -l -q'
+
+# Imgur API
+export IMGUR_CLIENT_KEY="85985e0d8fc291d"
+chmod +x ~/.bash_scripts/*
+
+# Upload image on Imgur
+function uploadImage {
+  curl -s -F "image=@$1" https://api.imgur.com/3/upload.xml -H "Authorization: Client-ID $IMGUR_CLIENT_KEY" | grep -E -o "<link>(.)*</link>" | grep -E -o "http://i.imgur.com/[^<]*"
+}
+export -f uploadImage
