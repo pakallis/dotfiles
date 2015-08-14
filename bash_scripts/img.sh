@@ -20,3 +20,4 @@ link=$(uploadImage "shot.png")
 echo $link
 echo $link | xclip -selection c
 rm "shot.png"
+notify-send "Image uploaded"
