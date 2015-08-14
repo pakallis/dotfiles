@@ -18,4 +18,5 @@ echo "imgur client key : $IMGUR_CLIENT_KEY"
 import "shot.png"
 link=$(uploadImage "shot.png")
 echo $link
+echo $link | xclip -selection c
 rm "shot.png"
