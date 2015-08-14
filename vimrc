@@ -12,6 +12,7 @@ Bundle 'tpope/vim-vividchalk'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tomasr/molokai'
 Bundle "AndrewRadev/splitjoin.vim"
+Bundle "mattn/gist-vim"
 Bundle "AndrewRadev/switch.vim"
 Bundle 'mustache/vim-mustache-handlebars'
 "Snipmate dependencies
