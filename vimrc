@@ -1,93 +1,86 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+  "Required for vundle. Do not remove
+  Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'gmarik/vundle'
-"My Bundles
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'tpope/vim-vividchalk'
-" Bundle 'mileszs/ack.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tomasr/molokai'
-Bundle "AndrewRadev/splitjoin.vim"
-Bundle "mattn/gist-vim"
-Bundle "AndrewRadev/switch.vim"
-Bundle 'mustache/vim-mustache-handlebars'
-"Snipmate dependencies
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-surround'
-Bundle 'szw/vim-tags'
-Bundle 'tmhedberg/matchit'
-" Bundle 'samsonw/vim-task'
-Bundle 'neilagabriel/vim-geeknote'
-Bundle 'scrooloose/syntastic'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-fugitive'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-rails'
-" Bundle 'tpope/vim-cucumber'
-Bundle 'Lokaltog/powerline'
-Bundle 'tpope/vim-bundler'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'mattn/webapi-vim'
-Bundle 'mmozuras/vim-github-comment'
-" Bundle 'mattn/emmet-vim'
+  "Colorschemes
+  Plugin 'tomasr/molokai'
+  Plugin 'tpope/vim-vividchalk'
+  Plugin 'altercation/vim-colors-solarized'
+  Plugin 'croaky/vim-colors-github'
 
-Bundle 'croaky/vim-colors-github'
-" Bundle 'henrik/vim-yaml-flattener'
-" Bundle 'lucapette/vim-ruby-doc'
-"
-"
-" Bundle 'gregsexton/gitv'
-" Bundle 'nielsmadan/harlequin'
-" Bundle 'fholgado/minibufexpl.vim'
-" Bundle 'Shougo/neocomplcache.vim'
-" Bundle 'scrooloose/nerdtree'
-" Bundle 'tomtom/tlib_vim'
-" Bundle 'vim-addon-mw-utils'
-Bundle 'bling/vim-airline'
-" Bundle 'altercation/vim-colors-solarized'
-" Bundle 'stephenmckinney/vim-dochub'
-" Bundle 'tpope/vim-git'
-" Bundle 'airblade/vim-gitgutter'
-" Bundle 'endel/vim-github-colorscheme'
-" Bundle 'tpope/vim-haml'
-" Bundle 'lucapette/vim-jquery-doc'
-" Bundle 'tpope/vim-repeat'
-" Bundle 'garbas/vim-snipmate'
-" Bundle 'szw/vim-tags'
-" Bundle 'chriskempson/vim-tomorrow-theme'
-" Bundle 'jgdavey/vim-turbux'
-" Bundle 'tpope/vim-unimpaired'
-Bundle 'pakallis/vim-turbux'
-" Bundle 'pgr0ss/vimux-ruby-test'
-Bundle 'benmills/vimux'
+  Plugin 'Lokaltog/vim-easymotion'
+  Plugin 'kien/ctrlp.vim'
+  Plugin 'tomtom/tcomment_vim'
+  Plugin 'tpope/vim-surround'
+  Plugin 'tpope/vim-fugitive'
+  "Plugin 'tpope/vim-markdown'
+  Plugin 'pakallis/vim-turbux'
+  Plugin 'benmills/vimux'
 
-" Enable only for html/css
-" let g:user_emmet_install_global = 0
-" Remap default key
-" let g:user_emmet_leader_key='<C-p>'
-" autocmd FileType html,css EmmetInstall
-"Settings
-"Binding for greek characters
+  
+  "Navigate between html tags with %
+  Plugin 'tmhedberg/matchit'
+
+  " ----------- fzf plugin and dependencies --------
+  "
+  Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plugin 'junegunn/fzf.vim'
+
+  " ----------- PHP specifics -----------
+  "
+  "Plugin 'vim-scripts/PIV'
+  "Plugin 'StanAngeloff/php.vim'
+  Plugin 'shawncplus/phpcomplete.vim'
+
+  " ----------- Coffeescript specifics -----
+  "
+  Plugin 'kchmck/vim-coffee-script'
+
+  "Match HTML tags
+  Plugin 'Valloric/MatchTagAlways'
+  Plugin 'mattn/emmet-vim'
+
+  " Disabled for performance reasons
+  " TODO: Evaluate if the benefits using
+  " it outeighs the performance degradation
+  " Plugin 'szw/vim-tags'
+  
+  " ----------- Check for syntax errors -------
+  Plugin 'scrooloose/syntastic'
+
+  "----------- Vim status bar --------
+  "
+  Plugin 'Lokaltog/powerline'
+  Plugin 'bling/vim-airline'
+
+  "Syntax checking, indentation for multiple languages
+  Plugin 'sheerun/vim-polyglot'
+
+  " ----------- Snipmate and dependencies -----------
+  "
+  Plugin 'MarcWeber/vim-addon-mw-utils'
+  Plugin 'tomtom/tlib_vim'
+  Plugin 'garbas/vim-snipmate'
+
+  " ------------ Optional Snippets for snipmate ---------
+  Plugin 'honza/vim-snippets'
+  Plugin 'hlissner/vim-ultisnips-snippets'
+
+call vundle#end()
+
 set keymap=greek_utf-8
 set iminsert=0
 set imsearch=-1
 set encoding=utf-8
 set showcmd
 
-"Relative numbers
-set number
-au FocusLost * set number
-au FocusGained * set relativenumber
-autocmd InsertEnter * set number
-autocmd InsertLeave * set relativenumber
-
 "Mouse enabled
 set mouse=a
-"Magic!
+
+"Remap ; to : to save an extra keystroke when saving
 nnoremap ; :
 
 "Sudo edit
@@ -98,13 +91,16 @@ syntax on
 set background=dark
 let g:solarized_termcolors=256
 set t_Co=256
+
 if has('gui_running')
   set background=light
 else
   set background=dark
 endif
 let mapleader = ","
-" Whitespace
+
+" -------- Whitespaces --------
+"
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -112,41 +108,26 @@ set expandtab
 "Bash-like tab
 set wildmenu
 
-"indenting
+"Indenting
 set autoindent
 set smartindent
 
-" Search
+" ---------- Search ------------
+"
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 filetype plugin indent on
 
-" Greek keyboard layout support change with ctrl + ^
-" set keymap=greek_utf-8
-" set iminsert=0
-" set imsearch=-1
-
 "
-"Easymotion
 
-"Remove this line to do everything with <leader><leader> in easymotion
-let g:EasyMotion_leader_key = '<Leader>'
-
-"CTRL-P
-" set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-
-"NerdTree
-map <C-n> :NERDTreeToggle<CR>
-
-" autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-" autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
+"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+"autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
 "
 map gn :bn<cr>
 map gp :bp<cr>
@@ -160,28 +141,18 @@ let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
 colorscheme molokai
-"fast search
-nmap <leader>A <Esc>:Ack <c-r><c-w> app/<CR>
-"rubytest parameters
 
-" map <Leader>r <Plug>RubyTestRun     " change from <Leader>t to <Leader>r
-" map <Leader>R <Plug>RubyFileRun     " change from <Leader>T to <Leader>R
-" map <Leader>rl <Plug>RubyTestRunLast " change from <Leader>l to <Leader>rl
+"Copy/paste from/to clipboard
+set clipboard=unnamed
 
-" let g:rubytest_cmd_test = 'ruby -ITest %p'
-" let g:rubytest_cmd_testcase = 'ruby -ITest %p -n '/%c/''
-" let g:rubytest_cmd_spec = 'spec -f specdoc %p'
-" let g:rubytest_cmd_example = 'spec -f specdoc %p -e '%c''
-" let g:rubytest_cmd_feature = 'cucumber %p'
-" let g:rubytest_cmd_story = 'cucumber %p -n '%c''
-"Test results in quickfix
-" let g:rubytest_in_quickfix = 1
-
+" |-------------------------------------------|
+" |-------------- Custom mappingss -----------|
+" |-------------------------------------------|
+"
+"Remap : to ; to save key strokes
+nnoremap ; :
 "Fast escape
 imap ;; <Esc>
-
-"Replace : with ; to save key strokes
-nnoremap ; :
 
 "Use Q for formatting the current paragraph
 vmap Q gq
@@ -194,9 +165,6 @@ nmap <Leader>p :. !pbpaste<CR>
 
 "Clear search history when you press <Leader>/
 nmap <silent> ,/ :nohlsearch<CR>
-
-"Copy/paste from/to clipboard
-set clipboard=unnamed
 
 "Fast save
 nmap ;w :w!<cr>
@@ -219,7 +187,7 @@ nnoremap <C-y> 3<C-y>
 " map <Leader>d :bd<Return>
 " map <Leader>f :b
 
-" Fugitive shortcuts
+"Fugitive shortcuts
 noremap ;gs :Gstatus<cr>
 noremap ;gc :Gcommit<cr>
 noremap ;gl :Glog<cr>
@@ -227,26 +195,40 @@ noremap ;gd :Gdiff<cr>
 noremap ;gb :Gbrowse<cr>
 
 "" Show the buffer number in the status line.
-" set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+"set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
-" Show whitespace chars
+"Show whitespace chars
 set list
 
-" Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+set shell=/bin/sh
+au BufRead,BufNewFile *.coffee set ft=coffee
+au BufRead,BufNewFile *.ejs set ft=html
 
-" Strip trailing whitespace
-
-let g:dochub_mapping='<Leader>-h'
-
-" Ignore some folders and files for faster indexing in CtrlP
+" |----------------------------------------------------|
+" |------------- Plugin settings ----------------------|
+" |----------------------------------------------------|
 "
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*.so,*.swp,*tags*,*/public/*
+"
+" -------------- Easymotion settings ---------
+"
+"Remove this line to do everything with <leader><leader> in easymotion
+"
+let g:EasyMotion_leader_key = '<Leader>'
 
+
+" -------------- Vimux settings ----------------
+"
+"let g:vimux_ruby_cmd_unit_test = "bundle exec m"
+"let g:VimuxOrientation = "h"
+"let g:coffeeCheckHighlightErrorLine = 1
+
+" ------------ Turbux settings ---------------
+"
+let g:turbux_test_type = 'minitest'
+let g:turbux_command_test_unit = 'ruby -ITest'
+
+" ----------- CTRL-P settings -----------
 let g:ctrlp_custom_ignore = 'tmp$\|\.git$\|\.hg$\|\.svn$\|.rvm$|.bundle$\|vendor|public'
-" let g:ctrlp_working_path_mode = 0
-"
-"ctrlp stuff
 let g:ctrlp_use_caching=1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_bottom=1
@@ -254,42 +236,33 @@ let g:ctrlp_max_height=25
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_clear_cache_on_exit=0
+"Ignore specific folders and files for faster indexing in CtrlP
+"
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*.so,*.swp,*tags*,*/public/*
 
-let g:github_user = 'pakallis'
-let g:github_comment_open_browser = 1
-"send command to tmux
-"Ack vim close quickfix window with ctrl + c
-" nnoremap <silent> <buffer><c-c> :ccl<CR>
-let g:github_upstream_issues=1
-" let g:vimux_ruby_cmd_unit_test = "bundle exec m"
-" let g:VimuxOrientation = "h"
-" let g:coffeeCheckHighlightErrorLine = 1
-au BufRead,BufNewFile *.coffee set ft=coffee
-au BufRead,BufNewFile *.ejs set ft=html
 
-let g:turbux_test_type = 'minitest'
-let g:turbux_command_test_unit = 'ruby -ITest'
-" let g:vim_tags_auto_generate = 1
-let g:vim_tags_auto_generate = 1
-" let g:vim_tags_project_tags_command = "ctags -R ./"
+" --------------- Emmet settings --------
+"
+let g:user_emmet_leader_key='<C-m>'
 
-let g:jquery_doc_command='open'
+" -------------- MatchTagAlways settings ------
+"
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'php' : 1,
+    \ 'blade' : 1,
+    \}
 
-let g:ruby_doc_ruby_host='http://apidock.com/ruby/'
-let g:ruby_doc_command='open'
+" |----------------------------------------------------|
+" |------------- Custom macros/aliases/functions ------|
+" |----------------------------------------------------|
 
-let g:jquery_doc_mapping='TT'
-let g:jquery_doc_command='open'
-let @d='odebugger'
-let @s='obinding.pry'
-let @r="opage.save_screenshot '1.png'"
-let @h="wi_html"
-let @t='Otime=(new Date()).getTime()<Esc>joconsole.log((new Date()).getTime() - time)'
-let @c='oconsole.log("hello")'
-set shell=/bin/sh
 
-"{{{ Todo List Mode
-
+" --------------- TODOlist -----------
+"
 function! TodoListMode()
    e ~/.todo.otl
    set foldlevel=1
@@ -297,13 +270,33 @@ function! TodoListMode()
    tabfirst
    " or 'norm! zMzr'
 endfunction
-
-"}}}
-
 nnoremap <silent> <Leader>todo :execute TodoListMode()<CR>
 
+" ------------- Strip trailing whitespaces --------------
+"autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+"Strip trailing whitespace
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+" ------------ Coffeescript/Javascript ----------------
+"
 function! PasteAsCoffee()
   :read !pbpaste | js2coffee
 endfunction
+
 :command! PasteAsCoffee :call PasteAsCoffee()
 :map <leader>pc :PasteAsCoffee<CR>
+
+" ------------- Custom macros -------------
+"
+let @d='odebugger'
+let @s='obinding.pry'
+let @r="opage.save_screenshot '1.png'"
+let @h="wi_html"
+let @t='Otime=(new Date()).getTime()<Esc>joconsole.log((new Date()).getTime() - time)'
+let @c='oconsole.log("hello")'
+

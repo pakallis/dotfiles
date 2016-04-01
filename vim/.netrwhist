@@ -1,11 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/pavloskallis/software_projects/incrediblue/app/controllers/auth'
-let g:netrw_dirhist_2='/Users/pavloskallis/software_projects/incrediblue/app/views/contact_form'
-let g:netrw_dirhist_3='/Users/pavloskallis/software_projects/incrediblue/app/views/referral_mailer'
-let g:netrw_dirhist_4='/Users/pavloskallis/software_projects/incrediblue/app/views/admin/countries'
-let g:netrw_dirhist_5='/Users/pavloskallis/software_projects/incrediblue/app/controllers/auth'
-let g:netrw_dirhist_6='/Users/pavloskallis/.vim'
-let g:netrw_dirhist_7='/Users/pavloskallis/software_projects/incrediblue/app/models/booking_manager'
-let g:netrw_dirhist_8='/Users/pavloskallis/software_projects/incrediblue/test/controllers/payments'
-let g:netrw_dirhist_9='/Users/pavloskallis/software_projects/incrediblue/app/assets/javascripts/v2/util'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/kallis/software/emathisipsm-v1/.scripts'

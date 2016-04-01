@@ -3,6 +3,8 @@ export EDITOR=/usr/bin/vim
 stty start undef stop undef
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/npm/bin # Add npm to PATH for frontend development
+
+PATH=$PATH:$HOME/.composer/vendor/bin
 alias c='clear'
 ## a quick way to get out of current directory ##
 alias ..='cd ..'
@@ -21,7 +23,6 @@ alias fgrep='fgrep --color=auto'
 alias mkdir='mkdir -pv'
 # become root #
 alias root='sudo -i'
-alias su='sudo -i'
 ## pass options to free ##
 alias meminfo='free -m -l -t'
 
@@ -36,7 +37,6 @@ alias pscpu='ps auxf | sort -nr -k 3' alias pscpu10='ps auxf | sort -nr -k 3 | h
 alias cpuinfo='lscpu'
 
 alias gno='gnome-open'
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
@@ -88,7 +88,6 @@ alias rg='bin/rails generate'
 alias rs='bin/rails server'
 # other aliases
 alias grep='grep --color=always'
-alias c='clear'
 alias fs='foreman start'
 alias frrs='foreman run bin/rails server'
 alias last='clear;!!'
@@ -115,7 +114,6 @@ alias install='sudo apt-get install'
 alias remove='sudo apt-get remove'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
-alias c='clear'
 alias l='ls'
 alias v='vim'
 alias testme="git push origin -f HEAD:semaphore/pavlos"
@@ -178,3 +176,69 @@ fi
 alias dl='docker ps -l -q'
 
 chmod +x ~/.bash_scripts/*
+################### Begin gpg functions ##################
+encrypt ()
+{
+# Use ascii armor
+gpg -ac --no-options "$1"
+}
+
+bencrypt ()
+{
+# No ascii armor
+# Encrypt binary data. jpegs/gifs/vobs/etc.
+gpg -c --no-options "$1"
+}
+
+decrypt ()
+{
+gpg --no-options "$1"
+}
+
+pe ()
+{
+# Passphrase encryption program
+# Created by Dave Crouse 01-13-2006
+# Reads input from text editor and encrypts to screen.
+clear
+echo "         Passphrase Encryption Program";
+echo "--------------------------------------------------"; echo "";
+which $EDITOR &>/dev/null
+ if [ $? != "0" ];
+     then
+     echo "It appears that you do not have a text editor set in your
+.bashrc file.";
+     echo "What editor would you like to use ? " ;
+     read EDITOR ; echo "";
+ fi
+echo "Enter the name/comment for this message :"
+read comment
+$EDITOR passphraseencryption
+gpg --armor --comment "$comment" --no-options --output
+passphraseencryption.gpg --symmetric passphraseencryption
+shred -u passphraseencryption ; clear
+echo "Outputting passphrase encrypted message"; echo "" ; echo "" ;
+cat passphraseencryption.gpg ; echo "" ; echo "" ;
+shred -u passphraseencryption.gpg ;
+read -p "Hit enter to exit" temp; clear
+}
+# usage: gpg-edit FILE
+gpg-edit() {
+	local ENCRYPTED="$1"
+
+	exec 3<<<""
+	gpg --decrypt <"$ENCRYPTED" >/dev/fd/3
+	vim /dev/fd/3
+	gpg -c <&3 >"$ENCRYPTED"
+	exec 3>&-
+}
+alias largest='du -hsx * | sort -rh | head -10'
+alias mc='mycli -u root -p root'
+
+setxkbmap -option grp:alt_shift_toggle us,el
+################### End gpg functions ##################
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+# Kepyes specific
+alias dumpallinone='mysqldump -h 197.1.2.57 -u diaxeirisi -p emathisi_psm > allinone_emathisi_psm.dump'
