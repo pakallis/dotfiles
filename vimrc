@@ -11,15 +11,22 @@ call vundle#begin()
   Plugin 'altercation/vim-colors-solarized'
   Plugin 'croaky/vim-colors-github'
 
+  Plugin 'rking/ag.vim'
   Plugin 'Lokaltog/vim-easymotion'
   Plugin 'kien/ctrlp.vim'
   Plugin 'tomtom/tcomment_vim'
   Plugin 'tpope/vim-surround'
   Plugin 'tpope/vim-fugitive'
-  "Plugin 'tpope/vim-markdown'
   Plugin 'pakallis/vim-turbux'
   Plugin 'benmills/vimux'
 
+  " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+  " If you want :UltiSnipsEdit to split your window.
+  let g:UltiSnipsEditSplit="vertical"
   
   "Navigate between html tags with %
   Plugin 'tmhedberg/matchit'
@@ -66,6 +73,8 @@ call vundle#begin()
   Plugin 'garbas/vim-snipmate'
 
   " ------------ Optional Snippets for snipmate ---------
+  " Track the engine.
+  Plugin 'SirVer/ultisnips'
   Plugin 'honza/vim-snippets'
   Plugin 'hlissner/vim-ultisnips-snippets'
 
@@ -207,8 +216,12 @@ au BufRead,BufNewFile *.ejs set ft=html
 " |----------------------------------------------------|
 " |------------- Plugin settings ----------------------|
 " |----------------------------------------------------|
-"
-"
+
+
+" --------------- Ag settings ----------------
+" 
+nnoremap \ :Ag<SPACE>
+
 " -------------- Easymotion settings ---------
 "
 "Remove this line to do everything with <leader><leader> in easymotion
@@ -236,6 +249,8 @@ let g:ctrlp_max_height=25
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
 "Ignore specific folders and files for faster indexing in CtrlP
 "
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*.so,*.swp,*tags*,*/public/*
