@@ -152,7 +152,8 @@ let g:solarized_termtrans = 1
 colorscheme molokai
 
 "Copy/paste from/to clipboard
-set clipboard=unnamed
+"TODO : Set this to unnames on Mac
+set clipboard=unnamedplus
 
 " |-------------------------------------------|
 " |-------------- Custom mappingss -----------|
