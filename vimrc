@@ -209,6 +209,9 @@ noremap ;gb :Gbrowse<cr>
 "Show whitespace chars
 set list
 
+" Show line numbers
+set number
+
 set shell=/bin/sh
 au BufRead,BufNewFile *.coffee set ft=coffee
 au BufRead,BufNewFile *.ejs set ft=html
