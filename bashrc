@@ -25,7 +25,10 @@ stty start undef stop undef
   alias gr='git remote'
   alias gs='git status '
   alias gst='git stash'
-  alias gx='gitx --all'
+
+  if [ ! $(uname -s) = "Darwin" ]; then
+    alias gx='gitx --all'
+  fi
 
 ################# END - Git aliases ###################
 
@@ -152,6 +155,7 @@ stty start undef stop undef
   #TODO add shortcuts for curl
   alias tmux="tmux -2"
 
+  # Mac OS specific copy-paste
   if [ ! $(uname -s) = "Darwin" ]; then
       alias pbcopy='xsel --clipboard --input'
       alias pbpaste='xsel --clipboard --output'
