@@ -19,18 +19,8 @@ call vundle#begin()
   Plugin 'tpope/vim-fugitive'
   Plugin 'pakallis/vim-turbux'
   Plugin 'benmills/vimux'
-
-  " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger="<c-b>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-  " If you want :UltiSnipsEdit to split your window.
-  let g:UltiSnipsEditSplit="vertical"
-  
   "Navigate between html tags with %
   Plugin 'tmhedberg/matchit'
-
   " ----------- fzf plugin and dependencies --------
   "
   Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -45,6 +35,7 @@ call vundle#begin()
   " ----------- Coffeescript specifics -----
   "
   Plugin 'kchmck/vim-coffee-script'
+  Plugin 'mustache/vim-mustache-handlebars'
 
   "Match HTML tags
   Plugin 'Valloric/MatchTagAlways'
@@ -78,6 +69,27 @@ call vundle#begin()
   Plugin 'honza/vim-snippets'
   Plugin 'hlissner/vim-ultisnips-snippets'
 
+  " ---------- Convert js to coffee ------------------
+  Plugin 'JarrodCTaylor/vim-js2coffee'
+
+  " TODO: evaluate its usability
+  Plugin 'AndrewRadev/splitjoin.vim'
+
+  " Post gist directly to vim
+  Plugin 'mattn/gist-vim'
+
+  " TODO: evaluate its usability
+  " Plugin 'tpope/vim-bundler'
+  " TODO: evaluate its usability
+  " Plugin 'christoomey/vim-tmux-navigator'
+  " ---------------- Ruby specific -------------------
+  "
+  Plugin 'tpope/vim-rails'
+  " TODO: evaluate its usability
+  Plugin 'rorymckinley/vim-rubyhash'
+  " TODO: evaluate its usability
+  " Plugin 'ecomba/vim-ruby-refactoring'
+
 call vundle#end()
 
 set keymap=greek_utf-8
@@ -106,6 +118,7 @@ if has('gui_running')
 else
   set background=dark
 endif
+
 let mapleader = ","
 
 " -------- Whitespaces --------
@@ -190,13 +203,6 @@ nnoremap <C-y> 3<C-y>
 "No annoying message Press ENTER or type command to continue
 " set shortmess=atI
 
-"Tab triggers buffer-name auto-completion
-" set wildchar=<Tab> wildmenu wildmode=list:longest
-" map <Leader>a :bprev<Return>
-" map <Leader>s :bnext<Return>
-" map <Leader>d :bd<Return>
-" map <Leader>f :b
-
 "Fugitive shortcuts
 noremap ;gs :Gstatus<cr>
 noremap ;gc :Gcommit<cr>
@@ -237,6 +243,9 @@ let g:EasyMotion_leader_key = '<Leader>'
 "
 "let g:vimux_ruby_cmd_unit_test = "bundle exec m"
 "let g:VimuxOrientation = "h"
+"
+" -------------- Coffeescript settings ---------
+"
 "let g:coffeeCheckHighlightErrorLine = 1
 
 " ------------ Turbux settings ---------------
@@ -244,7 +253,8 @@ let g:EasyMotion_leader_key = '<Leader>'
 let g:turbux_test_type = 'minitest'
 let g:turbux_command_test_unit = 'ruby -ITest'
 
-" ----------- CTRL-P settings -----------
+" ----------- CTRL-P settings ----------------
+"
 let g:ctrlp_custom_ignore = 'tmp$\|\.git$\|\.hg$\|\.svn$\|.rvm$|.bundle$\|vendor|public'
 let g:ctrlp_use_caching=1
 let g:ctrlp_working_path_mode = 'ra'
@@ -255,6 +265,15 @@ let g:ctrlp_follow_symlinks=1
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
+" ----------- Ultisnips settings -------------
+  " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  " If you want :UltiSnipsEdit to split your window.
+  let g:UltiSnipsEditSplit="vertical"
+  
+" ----------- Other settings -----------------
 "Ignore specific folders and files for faster indexing in CtrlP
 "
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*.so,*.swp,*tags*,*/public/*
@@ -318,4 +337,3 @@ let @r="opage.save_screenshot '1.png'"
 let @h="wi_html"
 let @t='Otime=(new Date()).getTime()<Esc>joconsole.log((new Date()).getTime() - time)'
 let @c='oconsole.log("hello")'
-
