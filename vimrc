@@ -10,7 +10,7 @@ call vundle#begin()
   Plugin 'tpope/vim-vividchalk'
   Plugin 'altercation/vim-colors-solarized'
   Plugin 'croaky/vim-colors-github'
-
+  Plugin 'christoomey/vim-tmux-navigator'
   Plugin 'rking/ag.vim'
   Plugin 'Lokaltog/vim-easymotion'
   Plugin 'kien/ctrlp.vim'
