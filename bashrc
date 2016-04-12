@@ -271,6 +271,8 @@ stty start undef stop undef
 
   export PATH=/usr/local/sbt/bin:$PATH
   export EDITOR=/usr/bin/vim
+  # python local executables
+  export PATH=~/.local/bin:$PATH
 
 #####################################################
 ####################### END - ENV variables #########
