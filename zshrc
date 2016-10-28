@@ -43,60 +43,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(tmux git osx ruby)
+plugins=(tmux git ruby)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.bashrc
-
-# Customize to your needs...
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-# if [[ uname != 'Linux' ]]; then
-# alias vim="/usr/local/Cellar/macvim/7.4.430_1/MacVim.app/Contents/MacOS/Vim"
-# fi
-
-# Git aliases
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.st status
-git config --global alias.unstage 'reset HEAD --'
-git config --global alias.visual '!gitk'
-
-alias g='git'
-alias ga='git add '
-alias gs='git status'
-alias gco='git checkout '
-alias gb='git branch '
-alias gcom='git commit '
-alias gcam='git commit -am '
-alias gl='git log '
-alias gst='git stash'
-
-alias gp='git push '
-alias gf='git fetch '
-alias gm='git merge '
-
-alias gd='git diff '
-alias gdc='git diff --cached'
-
-#Rails aliases
-alias rdbm='rake db:migrate'
-alias rr='rake routes'
-alias rdbr='rake db:rollback'
-alias rdbms='rake db:migrate:status'
-alias rdbtp='rake db:test:prepare'
-alias rmaq='rake minitest:all:quick'
-alias rmaf='rake minitest:features'
-alias rtest='bundle exec ruby -ITest '
-alias rc='rails console'
-# other aliases
-alias grep='grep --color=always'
-alias c='clear'
-alias fs='foreman start'
-alias vim='/usr/bin/vim'
-alias last='clear;!!'
-bindkey -v
-bindkey '^R' history-incremental-search-backward

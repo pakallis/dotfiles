@@ -1,6 +1,3 @@
-# Do not send control keys to terminal. I did this for vim to work with ctrl+s
-stty start undef stop undef
-
 #######################################################
 ################ Custom aliases #######################
 #######################################################
@@ -13,6 +10,7 @@ stty start undef stop undef
   alias gcom='git commit --verbose'
   alias fixup='git commit --fixup'
   alias gd='git diff --word-diff'
+  alias gdc='git diff --cached'
   alias gf='git fetch '
   alias gg='git grep'
   alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
@@ -25,10 +23,6 @@ stty start undef stop undef
   alias gr='git remote'
   alias gs='git status '
   alias gst='git stash'
-
-  if [ ! $(uname -s) = "Darwin" ]; then
-    alias gx='gitx --all'
-  fi
 
 ################# END - Git aliases ###################
 
@@ -155,16 +149,8 @@ stty start undef stop undef
   #TODO add shortcuts for curl
   alias tmux="tmux -2"
 
-  # Mac OS specific copy-paste
-  if [ ! $(uname -s) = "Darwin" ]; then
-      alias pbcopy='xsel --clipboard --input'
-      alias pbpaste='xsel --clipboard --output'
-  fi
   # Docker
   alias dl='docker ps -l -q'
-  # Kepyes specific
-  alias dumpallinone='mysqldump -h 197.1.2.57 -u diaxeirisi -p emathisi_psm > allinone_emathisi_psm.dump'
-
 ########### END - Other aliases ######################
 
 #####################################################
@@ -242,6 +228,9 @@ stty start undef stop undef
   PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
   PATH=$PATH:$HOME/npm/bin # Add npm to PATH for frontend development
   PATH=$PATH:$HOME/.composer/vendor/bin
+  PATH=$PATH:/usr/local/jdk1.8.0_101/bin
+  export JAVA_HOME=/usr/local/jdk1.8.0_101
+
 
   export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
   export PYTHONSTARTUP=/home/pakallis/.pythonrc
@@ -274,6 +263,7 @@ stty start undef stop undef
   ### Added by the Heroku Toolbelt
   export PATH="/usr/local/heroku/bin:$PATH"
   export PATH=/usr/local/sbt/bin:$PATH
+  export PATH=~/.scripts:$PATH
 
 
 #####################################################
@@ -281,7 +271,6 @@ stty start undef stop undef
 #####################################################
 
 ###################### FZF ##########################
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 #####################################################
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/npm/bin # Add npm to PATH for frontend development
@@ -408,12 +397,6 @@ alias alertonlive='ping -i 60 -a'
 # Define calculator function
 #? () { echo "$*" | bc -l; }
 
-# Copy-paste
-if [ ! $(uname -s) = "Darwin" ]; then
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
-fi
-
 alias recordvideo='ffmpeg -f x11grab -r 25 -s 800x600 -i :0.0 /tmp/outputFile.mpg'
 
 function unread() {
@@ -451,3 +434,51 @@ setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us,el
 #https://github.com/fliptheweb/bash-shortcuts-cheat-sheet
 
 [[ -s "/home/pakallis/.gvm/scripts/gvm" ]] && source "/home/pakallis/.gvm/scripts/gvm"
+export GOPATH=$HOME/go_workspace
+
+# Docker-compose
+alias dcrm="docker-compose stop; docker-compose rm"
+alias dcup="docker-compose up -d"
+alias dcl="docker-compose logs"
+alias dcps="docker-compose ps"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+alias gpg=gpg2
+
+# raspberry
+alias sharepi=ssh -X pakallis@192.168.1.6 'x2x -east -to :0'
+
+# Customize to your needs...
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Git aliases
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.visual '!gitk'
+
+#Rails aliases
+alias rdbm='rake db:migrate'
+alias rr='rake routes'
+alias rdbr='rake db:rollback'
+alias rdbms='rake db:migrate:status'
+alias rdbtp='rake db:test:prepare'
+alias rmaq='rake minitest:all:quick'
+alias rmaf='rake minitest:features'
+alias rtest='bundle exec ruby -ITest '
+alias rc='rails console'
+# other aliases
+alias grep='grep --color=always'
+alias c='clear'
+alias fs='foreman start'
+alias vim='/usr/bin/vim'
+alias last='clear;!!'
+
+export NVM_DIR="/home/pakallis/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
