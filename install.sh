@@ -10,6 +10,8 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 files="zpreztorc aliases bash_profile bash_scripts bashrc gitignore_global vimrc vim zshrc oh-my-zsh tmux.conf"    # list of files/folders to symlink in homedir
 
+echo "Installing prezto"
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ##########
 
 # create dotfiles_old in homedir
