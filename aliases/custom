@@ -1,0 +1,23 @@
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+alias wanip='curl ifconfig.me'
+alias recordvideo='ffmpeg -f x11grab -r 25 -s 800x600 -i :0.0 /tmp/outputFile.mpg'
+alias large_files='du -s * | sort -n | tail'
+rtfm() { help $@ || man $@ || $BROWSER "http://www.google.com/search?q=$@"; }
+alias gno='gnome-open'
+alias root='sudo -i'
+alias mkdir='mkdir -pv'
+## Colorize the grep command output for ease of use (good for log files)##
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias ascii_table='man ascii'
+alias asciikey='showkey -a'
+alias c='clear'
+alias vim='/usr/bin/vim'
+alias appsinternet='lsof -P -i -n | cut -f 1 -d " "| uniq | tail -n +2'
+alias robo="/opt/robo3t-1.1.1-linux-x86_64-c93c6b0/bin/robo3t"

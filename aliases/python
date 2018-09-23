@@ -1,0 +1,3 @@
+alias py3="source ~/Envs/py3/bin/activate"
+alias ipy="ipython"
+alias jp="jupyter notebook"

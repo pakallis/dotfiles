@@ -13,10 +13,13 @@ call vundle#begin()
   Plugin 'christoomey/vim-tmux-navigator'
   Plugin 'rking/ag.vim'
   Plugin 'Lokaltog/vim-easymotion'
+  " Plugin 'pangloss/vim-javascript'
+  Plugin 'moll/vim-node'
   Plugin 'kien/ctrlp.vim'
   Plugin 'tomtom/tcomment_vim'
   Plugin 'tpope/vim-surround'
   Plugin 'tpope/vim-fugitive'
+  Plugin 'ngmy/vim-rubocop'
   Plugin 'pakallis/vim-turbux'
   Plugin 'benmills/vimux'
   "Navigate between html tags with %
@@ -151,6 +154,10 @@ filetype plugin indent on
 "autocmd FileType ruby,eruby let g:rubycomplete_include_object = 1
 "autocmd FileType ruby,eruby let g:rubycomplete_include_objectspace = 1
 "
+"
+" Set tabs for GO instead of spaces
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
@@ -162,7 +169,7 @@ set background=dark
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
-colorscheme molokai
+colorscheme github
 
 "Copy/paste from/to clipboard
 "TODO : Set this to unnames on Mac
@@ -222,6 +229,7 @@ set number
 set shell=/bin/sh
 au BufRead,BufNewFile *.coffee set ft=coffee
 au BufRead,BufNewFile *.ejs set ft=html
+au BufRead,BufNewFile *.js6 set ft=javascript
 
 " |----------------------------------------------------|
 " |------------- Plugin settings ----------------------|
@@ -311,7 +319,7 @@ endfunction
 nnoremap <silent> <Leader>todo :execute TodoListMode()<CR>
 
 " ------------- Strip trailing whitespaces --------------
-"autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 "Strip trailing whitespace
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
@@ -337,3 +345,42 @@ let @r="opage.save_screenshot '1.png'"
 let @h="wi_html"
 let @t='Otime=(new Date()).getTime()<Esc>joconsole.log((new Date()).getTime() - time)'
 let @c='oconsole.log("hello")'
+"Map last command to ctrl+l
+:noremap <C-m> @:
+
+"Enable haml linter
+let g:syntastic_haml_checkers = ['haml_lint', 'scss_lint', 'coffeelint']
+let g:syntastic_r_checkers = ['lintr']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = '~/software_projects/centaurtek/centaur-tech-fog-agent/node_modules/eslint/bin/eslint.js'
+let g:syntastic_enable_r_lintr_checker = 1
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
+
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
+
+let g:pymode_python = 'python3'

@@ -1,0 +1,31 @@
+################### Ruby aliases #####################
+alias rdbm='bin/rake db:migrate'
+alias rr='bin/rake routes'
+alias rdbr='bin/rake db:rollback'
+alias rdbms='bin/rake db:migrate:status'
+alias rdbtp='bin/rake db:test:prepare'
+alias rdbmd='bin/rake db:migrate:down'
+alias rmaq='rdbtp && bin/rake minitest:all:quick'
+alias rtsp="rake teaspoon"
+alias testall='bin/rake test:all'
+alias rmaf='bin/rake minitest:features'
+alias rtest='bin/bundle exec ruby -Itest '
+alias rc='bin/rails c'
+alias frrc='foreman run bin/rails c'
+alias fs='foreman start'
+alias frrs='foreman run bin/rails server'
+alias b='bin/bundle'
+alias rk='bin/rake'
+alias bi='bin/bundle install'
+alias bu='bin/bundle update'
+alias be='bin/bundle exec'
+alias rg='bin/rails generate'
+alias rs='bin/rails server'
+
+function runttest {
+  tmux select-pane -t 2
+    tmux send-keys "rdbtp" C-m
+    tmux send-keys "rmaq" C-m
+    tmux select-pane -t 1
+}
+############# END - Rails aliases ####################

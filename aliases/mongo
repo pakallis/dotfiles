@@ -1,0 +1,3 @@
+function db_restore() {
+  mongorestore --gzip --archive=centaur-tech.db.bak.2017-07-10T12_58_38.903Z.tar.gz --db centaur-tech
+}

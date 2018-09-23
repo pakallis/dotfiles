@@ -1,0 +1,6 @@
+alias dl='docker ps -l -q'
+# Docker Compose
+alias dcrm="docker-compose stop; docker-compose rm"
+alias dcup="docker-compose up -d"
+alias dcl="docker-compose logs"
+alias dcps="docker-compose ps"
