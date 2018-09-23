@@ -47,3 +47,4 @@ plugins=(tmux git python aws node npm docker pip)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.bashrc
+source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
