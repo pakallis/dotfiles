@@ -6,22 +6,13 @@ call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'
 
   "Colorschemes
-  Plugin 'tomasr/molokai'
-  Plugin 'tpope/vim-vividchalk'
-  Plugin 'altercation/vim-colors-solarized'
   Plugin 'croaky/vim-colors-github'
-  Plugin 'christoomey/vim-tmux-navigator'
-  Plugin 'rking/ag.vim'
+  "Utilities
   Plugin 'Lokaltog/vim-easymotion'
-  " Plugin 'pangloss/vim-javascript'
-  Plugin 'moll/vim-node'
   Plugin 'kien/ctrlp.vim'
   Plugin 'tomtom/tcomment_vim'
   Plugin 'tpope/vim-surround'
   Plugin 'tpope/vim-fugitive'
-  Plugin 'ngmy/vim-rubocop'
-  Plugin 'pakallis/vim-turbux'
-  Plugin 'benmills/vimux'
   "Navigate between html tags with %
   Plugin 'tmhedberg/matchit'
   " ----------- fzf plugin and dependencies --------
@@ -29,25 +20,10 @@ call vundle#begin()
   Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plugin 'junegunn/fzf.vim'
 
-  " ----------- PHP specifics -----------
-  "
-  "Plugin 'vim-scripts/PIV'
-  "Plugin 'StanAngeloff/php.vim'
-  Plugin 'shawncplus/phpcomplete.vim'
-
-  " ----------- Coffeescript specifics -----
-  "
-  Plugin 'kchmck/vim-coffee-script'
-  Plugin 'mustache/vim-mustache-handlebars'
-
   "Match HTML tags
   Plugin 'Valloric/MatchTagAlways'
   Plugin 'mattn/emmet-vim'
 
-  " Disabled for performance reasons
-  " TODO: Evaluate if the benefits using
-  " it outeighs the performance degradation
-  " Plugin 'szw/vim-tags'
   
   " ----------- Check for syntax errors -------
   Plugin 'scrooloose/syntastic'
@@ -71,28 +47,6 @@ call vundle#begin()
   Plugin 'SirVer/ultisnips'
   Plugin 'honza/vim-snippets'
   Plugin 'hlissner/vim-ultisnips-snippets'
-
-  " ---------- Convert js to coffee ------------------
-  Plugin 'JarrodCTaylor/vim-js2coffee'
-
-  " TODO: evaluate its usability
-  Plugin 'AndrewRadev/splitjoin.vim'
-
-  " Post gist directly to vim
-  Plugin 'mattn/gist-vim'
-
-  " TODO: evaluate its usability
-  " Plugin 'tpope/vim-bundler'
-  " TODO: evaluate its usability
-  " Plugin 'christoomey/vim-tmux-navigator'
-  " ---------------- Ruby specific -------------------
-  "
-  Plugin 'tpope/vim-rails'
-  " TODO: evaluate its usability
-  Plugin 'rorymckinley/vim-rubyhash'
-  " TODO: evaluate its usability
-  " Plugin 'ecomba/vim-ruby-refactoring'
-
 call vundle#end()
 
 set keymap=greek_utf-8
