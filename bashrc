@@ -27,11 +27,9 @@ PATH=$PATH:$HOME/npm/bin # Add npm to PATH for frontend development
 # @see https://faq.i3wm.org/question/4595/problems-when-switching-keyboard-layout-in-gnome-i3/indsym $ms+d exec setxkbmap de
 setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us,el
 [[ -s "/home/pakallis/.gvm/scripts/gvm" ]] && source "/home/pakallis/.gvm/scripts/gvm"
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # Customize to your needs...
 export NVM_DIR="/home/pakallis/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export WORKON_HOME=~/Envs
-source ~/.autoenv/activate.sh
-source /usr/local/bin/virtualenvwrapper.sh
+alias idea="/opt/idea-IU-173.3727.127/bin/idea.sh"
