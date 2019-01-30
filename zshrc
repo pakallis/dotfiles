@@ -48,3 +48,9 @@ plugins=(tmux git python aws node npm docker pip)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.bashrc
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+export VISUAL=vim
+export EDITOR="$VISUAL"
+alias py=python
+export PATH="/home/pakallis/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
