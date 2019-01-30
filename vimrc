@@ -1,7 +1,6 @@
 set nocompatible
 filetype off
 call plug#begin()
-
   Plug 'croaky/vim-colors-github'
   Plug 'Lokaltog/vim-easymotion'
   Plug 'kien/ctrlp.vim'
@@ -15,7 +14,7 @@ call plug#begin()
   Plug 'mattn/emmet-vim'
   Plug 'Lokaltog/powerline'
   Plug 'bling/vim-airline'
-  "Plug 'w0rp/ale'
+  Plug 'w0rp/ale'
   Plug 'MarcWeber/vim-addon-mw-utils'
   Plug 'tomtom/tlib_vim'
   Plug 'SirVer/ultisnips'
@@ -224,3 +223,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:pymode_python = 'python3'
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '❗'
+let g:ale_linters = {'python': ['prospector']}
+"Echoed message
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
