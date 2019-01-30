@@ -1,53 +1,48 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-  "Required for vundle. Do not remove
-  Plugin 'VundleVim/Vundle.vim'
+call plug#begin()
 
   "Colorschemes
-  Plugin 'croaky/vim-colors-github'
+  Plug 'croaky/vim-colors-github'
   "Utilities
-  Plugin 'Lokaltog/vim-easymotion'
-  Plugin 'kien/ctrlp.vim'
-  Plugin 'tomtom/tcomment_vim'
-  Plugin 'tpope/vim-surround'
-  Plugin 'tpope/vim-fugitive'
+  Plug 'Lokaltog/vim-easymotion'
+  Plug 'kien/ctrlp.vim'
+  Plug 'tomtom/tcomment_vim'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-fugitive'
   "Navigate between html tags with %
-  Plugin 'tmhedberg/matchit'
+  Plug 'tmhedberg/matchit'
   " ----------- fzf plugin and dependencies --------
   "
-  Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plugin 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
 
   "Match HTML tags
-  Plugin 'Valloric/MatchTagAlways'
-  Plugin 'mattn/emmet-vim'
+  Plug 'Valloric/MatchTagAlways'
+  Plug 'mattn/emmet-vim'
 
   
-  " ----------- Check for syntax errors -------
-  Plugin 'scrooloose/syntastic'
-
   "----------- Vim status bar --------
   "
-  Plugin 'Lokaltog/powerline'
-  Plugin 'bling/vim-airline'
+  Plug 'Lokaltog/powerline'
+  Plug 'bling/vim-airline'
 
   "Syntax checking, indentation for multiple languages
-  Plugin 'sheerun/vim-polyglot'
+  "Plug 'sheerun/vim-polyglot'
+  "Plug 'w0rp/ale'
 
   " ----------- Snipmate and dependencies -----------
   "
-  Plugin 'MarcWeber/vim-addon-mw-utils'
-  Plugin 'tomtom/tlib_vim'
-  Plugin 'garbas/vim-snipmate'
+  Plug 'MarcWeber/vim-addon-mw-utils'
+  Plug 'tomtom/tlib_vim'
+  "Plug 'garbas/vim-snipmate'
 
   " ------------ Optional Snippets for snipmate ---------
   " Track the engine.
-  Plugin 'SirVer/ultisnips'
-  Plugin 'honza/vim-snippets'
-  Plugin 'hlissner/vim-ultisnips-snippets'
-call vundle#end()
+  "Plug 'SirVer/ultisnips'
+  "Plug 'honza/vim-snippets'
+  "Plug 'hlissner/vim-ultisnips-snippets'
+call plug#end()
 
 set keymap=greek_utf-8
 set iminsert=0
@@ -186,7 +181,7 @@ au BufRead,BufNewFile *.ejs set ft=html
 au BufRead,BufNewFile *.js6 set ft=javascript
 
 " |----------------------------------------------------|
-" |------------- Plugin settings ----------------------|
+" |------------- Plug settings ----------------------|
 " |----------------------------------------------------|
 
 
