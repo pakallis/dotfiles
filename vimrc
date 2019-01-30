@@ -15,8 +15,6 @@ call plug#begin()
   Plug 'Lokaltog/powerline'
   Plug 'bling/vim-airline'
   Plug 'w0rp/ale'
-  Plug 'MarcWeber/vim-addon-mw-utils'
-  Plug 'tomtom/tlib_vim'
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
 call plug#end()
@@ -164,7 +162,7 @@ let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " ----------- Ultisnips settings -------------
-  " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -225,7 +223,7 @@ set statusline+=%*
 let g:pymode_python = 'python3'
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '❗'
-let g:ale_linters = {'python': ['prospector']}
+let g:ale_linters = {'python': ['pylint']}
 "Echoed message
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
